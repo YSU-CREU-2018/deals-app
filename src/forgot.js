@@ -62,6 +62,7 @@ class Forgot extends Component {
     state = {
         email: '',
         password:'',
+        repeatPassword:'',
     };
 
     handleChange = email => event => {
@@ -74,9 +75,15 @@ class Forgot extends Component {
             [password]: event.target.value,
         });
     };
+    handleChange = repeatPassword => event => {
+        this.setState({
+            [repeatPassword]: event.target.value,
+        });
+    };
+
 
     onButtonClick = () => {
-        axios.post('http://localhost:3000/login',{
+        axios.post('http://localhost:3000/forgot',{
             email: this.state.email,
             password:this.state.password,
         }
