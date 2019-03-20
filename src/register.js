@@ -7,6 +7,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 
 const styles = theme => ({
@@ -41,6 +44,9 @@ const styles = theme => ({
   input: {
     display: 'none',
   },
+  check: {
+      marginLeft: 10,
+  },
 });
 
 const sex = [
@@ -67,38 +73,47 @@ class Register extends Component {
         email: '',
         password:'',
         repeatPassword: '',
+        check: true,
     };
 
-    handleChange = firstName => event => {
+    handleFirstName = firstName => event => {
         this.setState({
-            [firstName]: event.target.value,
+            firstName: event.target.value,
         });
     };
-    handleChange = lastName => event => {
+    handleLastName = lastName => event => {
         this.setState({
-            [lastName]: event.target.value,
+            lastName: event.target.value,
         });
     };
-    handleChange = email => event => {
+    handleEmail = email => event => {
         this.setState({
-            [email]: event.target.value,
+            email: event.target.value,
         });
     };
-    handleChange = password => event => {
+    handlePassword = password => event => {
         this.setState({
-            [password]: event.target.value,
+            password: event.target.value,
         });
     };
-    handleChange = age => event => {
+    handleRepeat = repeatPassword => event => {
         this.setState({
-            [age]: event.target.value,
+            repeatPassword: event.target.value,
         });
     };
-    handleChange = sex => event => {
+    handleAge = age => event => {
         this.setState({
-            [sex]: event.target.value,
+            age: event.target.value,
         });
     };
+    handleSex = sex => event => {
+        this.setState({
+            sex : event.target.value,
+        });
+    };
+    handleCheck= check => event => {
+        this.setState({ check : event.target.checked });
+  };
 
     onButtonClick = () => {
         axios.post('http://localhost:3000/register',{
@@ -133,7 +148,7 @@ class Register extends Component {
                         label="First Name"
                         className={classes.textField}
                         value={this.state.firstName}
-                        onChange={this.handleChange('firstName')}
+                        onChange={this.handleFirstName('firstName')}
                         margin="normal"
                         variant="outlined"
                     />
@@ -143,7 +158,7 @@ class Register extends Component {
                         label="Last Name"
                         className={classes.textField}
                         value={this.state.lastName}
-                        onChange={this.handleChange('lastName')}
+                        onChange={this.handleLastName('lastName')}
                         margin="normal"
                         variant="outlined"
                     />
@@ -154,6 +169,7 @@ class Register extends Component {
                         type="date"
                         defaultValue="2017-05-24"
                         className={classes.textField}
+                        onChange={this.handleAge('age')}
                         InputLabelProps={{
                             shrink: true,
                         }}
@@ -167,7 +183,7 @@ class Register extends Component {
                         label="Select"
                         className={classes.textField}
                         value={this.state.sex}
-                        onChange={this.handleChange('sex')}
+                        onChange={this.handleSex('sex')}
                         SelectProps={{
                             MenuProps: {
                                 className: classes.menu,
@@ -189,7 +205,7 @@ class Register extends Component {
                         label="Email"
                         className={classes.textField}
                         value={this.state.email}
-                        onChange={this.handleChange('email')}
+                        onChange={this.handleEmail('email')}
                         margin="normal"
                         variant="outlined"
                     />
@@ -200,7 +216,7 @@ class Register extends Component {
                         label="Password"
                         className={classes.textField}
                         value={this.state.password}
-                        onChange={this.handleChange('password')}
+                        onChange={this.handlePassword('password')}
                         type="password"
                         autoComplete="current-password"
                         margin="normal"
@@ -212,11 +228,23 @@ class Register extends Component {
                         label=" Repeat Password"
                         className={classes.textField}
                         value={this.state.repeatPassword}
-                        onChange={this.handleChange('repeatPassword')}
+                        onChange={this.handleRepeat('repeatPassword')}
                         type="password"
                         autoComplete="current-password"
                         margin="normal"
                         variant="outlined"
+                    />
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={this.state.check}
+                          className={classes.check}
+                          onChange={this.handleCheck('check')}
+                          value="checkedA"
+                          color="primary"
+                        />
+                      }
+                      label="By checking this box you agree to our privacy statement and terms of service"
                     />
 
                     <Button variant="contained" color="primary" onClick={this.onButtonClick} className={classes.button}>
