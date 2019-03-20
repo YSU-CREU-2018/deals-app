@@ -89,7 +89,7 @@ class Forgot extends Component {
         }
         )
         .then(function (response) {
-            console.log(response);
+            this.history.push("/ResetSuccess")
         })
         .catch(function (error) {
             console.log(error);

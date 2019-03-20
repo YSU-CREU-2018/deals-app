@@ -68,11 +68,12 @@ class Register extends Component {
     state = {
         firstName: '',
         lastName: '',
-        age: '',
+        birthday: '',
         sex: '',
         email: '',
         password:'',
         repeatPassword: '',
+        likes: '',
         check: true,
     };
 
@@ -84,6 +85,11 @@ class Register extends Component {
     handleLastName = lastName => event => {
         this.setState({
             lastName: event.target.value,
+        });
+    };
+    handleLikes = likes => event => {
+        this.setState({
+            likes: event.target.value,
         });
     };
     handleEmail = email => event => {
@@ -101,9 +107,9 @@ class Register extends Component {
             repeatPassword: event.target.value,
         });
     };
-    handleAge = age => event => {
+    handleBirthday = birthday => event => {
         this.setState({
-            age: event.target.value,
+            birthday: event.target.value,
         });
     };
     handleSex = sex => event => {
@@ -119,14 +125,15 @@ class Register extends Component {
         axios.post('http://localhost:3000/register',{
             'first-name': this.state.firstName,
             'last-name': this.state.lastName,
-            age: this.state.age,
+            birthday: this.state.birthday,
             sex: this.state.sex,
             email: this.state.email,
+            likes: this.state.likes,
             password:this.state.password,
         }
         )
-        .then(function (response) {
-            console.log(response);
+        .then((response) => {
+            this.props.history.push("/regsuccess")
         })
         .catch(function (error) {
             console.log(error);
@@ -162,6 +169,16 @@ class Register extends Component {
                         margin="normal"
                         variant="outlined"
                     />
+                    <TextField
+                        id="outlined-likes"
+                        helperText="Please enter some general interests, like 'techology' or 'fashion'"
+                        label="Likes"
+                        className={classes.textField}
+                        value={this.state.likes}
+                        onChange={this.handleLikes('likes')}
+                        margin="normal"
+                        variant="outlined"
+                    />
 
                     <TextField
                         id="date"
@@ -169,7 +186,7 @@ class Register extends Component {
                         type="date"
                         defaultValue="2017-05-24"
                         className={classes.textField}
-                        onChange={this.handleAge('age')}
+                        onChange={this.handleBirthday('birthday')}
                         InputLabelProps={{
                             shrink: true,
                         }}
@@ -244,7 +261,7 @@ class Register extends Component {
                           color="primary"
                         />
                       }
-                      label="By checking this box you agree to our privacy statement and terms of service"
+                      label="By checking this box you acknowledge the use of your information for purely academic research."
                     />
 
                     <Button variant="contained" color="primary" onClick={this.onButtonClick} className={classes.button}>

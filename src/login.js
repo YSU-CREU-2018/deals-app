@@ -81,8 +81,8 @@ class Login extends Component {
             password:this.state.password,
         }
         )
-        .then(function (response) {
-            console.log(response);
+        .then((response) => {
+            // this.props.history.push("/intro")
         })
         .catch(function (error) {
             console.log(error);
