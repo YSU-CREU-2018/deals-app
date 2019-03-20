@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -65,7 +66,7 @@ class Register extends Component {
         sex: '',
         email: '',
         password:'',
-        multiline: 'Controlled',
+        repeatPassword: '',
     };
 
     handleChange = firstName => event => {
@@ -99,6 +100,24 @@ class Register extends Component {
         });
     };
 
+    onButtonClick = () => {
+        axios.post('http://localhost:3000/register',{
+            'first-name': this.state.firstName,
+            'last-name': this.state.lastName,
+            age: this.state.age,
+            sex: this.state.sex,
+            email: this.state.email,
+            password:this.state.password,
+        }
+        )
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+
     render() {
         const { classes } = this.props;
 
@@ -110,7 +129,7 @@ class Register extends Component {
 
                 <form className={classes.container} noValidate autoComplete="off">
                     <TextField
-                        id="outlined-name"
+                        id="outlined-first-name"
                         label="First Name"
                         className={classes.textField}
                         value={this.state.firstName}
@@ -120,7 +139,7 @@ class Register extends Component {
                     />
 
                     <TextField
-                        id="outlined-name"
+                        id="outlined-last-name"
                         label="Last Name"
                         className={classes.textField}
                         value={this.state.lastName}
@@ -177,9 +196,11 @@ class Register extends Component {
 
                     <TextField
                         id="outlined-password-input"
+                        helperText="WARNING: Passwords are stored in plain text: do not use a password you use for other accounts."
                         label="Password"
                         className={classes.textField}
                         value={this.state.password}
+                        onChange={this.handleChange('password')}
                         type="password"
                         autoComplete="current-password"
                         margin="normal"
@@ -187,17 +208,18 @@ class Register extends Component {
                     />
 
                     <TextField
-                        id="outlined-password-input"
+                        id="outlined-repeated-password-input"
                         label=" Repeat Password"
                         className={classes.textField}
-                        value={this.state.password}
+                        value={this.state.repeatPassword}
+                        onChange={this.handleChange('repeatPassword')}
                         type="password"
                         autoComplete="current-password"
                         margin="normal"
                         variant="outlined"
                     />
 
-                    <Button variant="contained" color="primary" className={classes.button}>
+                    <Button variant="contained" color="primary" onClick={this.onButtonClick} className={classes.button}>
                         Register
                     </Button>
                 </form>
