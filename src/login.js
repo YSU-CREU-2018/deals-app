@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -43,21 +40,6 @@ const styles = theme => ({
   },
 });
 
-const sex = [
-  {
-    value: 'Male',
-    label: 'Male',
-  },
-  {
-    value: 'Female',
-    label: 'Female',
-  },
-  {
-    value: 'Other',
-    label: 'Other',
-  },
-];
-
 class Login extends Component {
     state = {
         email: '',
@@ -82,7 +64,7 @@ class Login extends Component {
         }
         )
         .then((response) => {
-            // this.props.history.push("/intro")
+            this.props.history.push("/intro")
         })
         .catch(function (error) {
             console.log(error);
