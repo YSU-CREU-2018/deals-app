@@ -2,59 +2,16 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 const styles = theme => ({
-  register: {
+  reset: {
     padding: '100px',
-  },
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-
-    justifyContent: 'center',
-    margin: '0 auto',
-    flexWrap: 'wrap',
-    maxWidth: '327px',
-  },
-  heading:{
     textAlign: 'center',
 },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-  },
-  dense: {
-    marginTop: 16,
-  },
-  menu: {
-    width: 200,
-  },
-  button: {
-    margin: theme.spacing.unit,
-  },
-  input: {
-    display: 'none',
-  },
 });
 
-class Login extends Component {
-    state = {
-        email: '',
-        password:'',
-    };
-
-    handleChange = email => event => {
-        this.setState({
-            [email]: event.target.value,
-        });
-    };
-    handleChange = password => event => {
-        this.setState({
-            [password]: event.target.value,
-        });
-    };
+class resetSuccess extends Component {
 
     onButtonClick = () => {
         this.props.history.push("/login")
@@ -64,7 +21,7 @@ class Login extends Component {
         const { classes } = this.props;
 
         return (
-            <div className={classes.register}>
+            <div className={classes.reset}>
                 <Typography variant="h3" className={classes.heading} gutterBottom>
                     Your Password has been reset. You may now login.
                 </Typography>
@@ -75,4 +32,4 @@ class Login extends Component {
         );
     }
 }
-export default withStyles(styles)(Login);
+export default withStyles(styles)(resetSuccess);
