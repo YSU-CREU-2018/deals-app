@@ -70,24 +70,27 @@ function Dashboard(props) {
       >
         <div className={classes.toolbar} />
         <List>
-            <ListItem button>
-
-              <ListItemIcon><HomeIcon /></ListItemIcon>
-              <ListItemText primary={'Home'} />
-            </ListItem>
+            <Link to={'/dashboard/home'}>
+                <ListItem button>
+                  <ListItemIcon><HomeIcon /></ListItemIcon>
+                  <ListItemText primary={'Home'} />
+                </ListItem>
+            </Link>
         </List>
         <Divider />
         <List>
-            <ListItem button>
-                  <Link to={'/dashboard/profile'}/>
-                  <ListItemIcon><FaceIcon /></ListItemIcon>
-                  <ListItemText primary={'Profile'} />
-            </ListItem>
-            <ListItem button>
-              <Link to={'/dashboard/deals'}/>
-              <ListItemIcon><InboxIcon /></ListItemIcon>
-              <ListItemText primary={'Deals'} />
-            </ListItem>
+            <Link to={'/dashboard/profile'}>
+                <ListItem button>
+                      <ListItemIcon><FaceIcon /></ListItemIcon>
+                      <ListItemText primary={'Profile'} />
+                </ListItem>
+            </Link>
+            <Link to={'/dashboard/deals'}>
+                <ListItem button>
+                  <ListItemIcon><InboxIcon /></ListItemIcon>
+                  <ListItemText primary={'Deals'} />
+                </ListItem>
+            </Link>
         </List>
       </Drawer>
 
