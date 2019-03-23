@@ -17,8 +17,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 
 const styles = theme => ({
     root:{
-        padding: 20,
-        width: '100%',
+        padding: 15,
     },
     dealtitle: {
         marginTop: 30,

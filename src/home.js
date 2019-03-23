@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 const styles = {
     home: {
         margin: 50,
+        maxWidth: 1000,
     }
 };
 
