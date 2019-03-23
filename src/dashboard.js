@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,6 +15,11 @@ import ListItemText from '@material-ui/core/ListItemText';
 import FaceIcon from '@material-ui/icons/Face';
 import InboxIcon from '@material-ui/icons/Inbox';
 import HomeIcon from '@material-ui/icons/Home';
+
+import Home from './home';
+import Profile from './profile';
+import Deals from './deals';
+
 
 
 const drawerWidth = 240;
@@ -37,6 +43,9 @@ const styles = theme => ({
     padding: theme.spacing.unit * 3,
   },
   toolbar: theme.mixins.toolbar,
+  body: {
+      marginTop: 64,
+  }
 });
 
 function Dashboard(props) {
@@ -61,23 +70,33 @@ function Dashboard(props) {
       >
         <div className={classes.toolbar} />
         <List>
-          {['Home'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 3 === 0 ? <HomeIcon /> : <InboxIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+            <ListItem button>
+
+              <ListItemIcon><HomeIcon /></ListItemIcon>
+              <ListItemText primary={'Home'} />
             </ListItem>
-          ))}
         </List>
         <Divider />
         <List>
-          {['Profile', 'Deals'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 3 === 0 ? <FaceIcon /> : <InboxIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+            <ListItem button>
+                  <Link to={'/dashboard/profile'}/>
+                  <ListItemIcon><FaceIcon /></ListItemIcon>
+                  <ListItemText primary={'Profile'} />
             </ListItem>
-          ))}
+            <ListItem button>
+              <Link to={'/dashboard/deals'}/>
+              <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemText primary={'Deals'} />
+            </ListItem>
         </List>
       </Drawer>
+
+      <div className={classes.body}>
+          <Route path='/dashboard/home' component={Home} />
+          <Route path='/dashboard/profile' component={Profile} />
+          <Route path='/dashboard/deals' component={Deals} />
+      </div>
+
     </div>
   );
 }
