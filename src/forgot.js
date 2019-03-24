@@ -70,8 +70,8 @@ class Forgot extends Component {
             password:this.state.password,
         }
         )
-        .then(function (response) {
-            this.history.push("/ResetSuccess")
+        .then((response) => {
+            this.props.history.push("/resetSuccess")
         })
         .catch(function (error) {
             console.log(error);

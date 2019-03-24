@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -104,9 +105,15 @@ class Login extends Component {
                         variant="outlined"
                     />
 
-                    <Button variant="contained" color="primary" onClick={this.onButtonClick} className={classes.button}>
+                    <Button variant="contained" color="primary" onClick={this.onButtonClick} refresh='true' className={classes.button}>
                         Login
                     </Button>
+                    <Link className={classes.title} color="textSecondary" to={'/forgot'} >
+                        Forgot Password?
+                    </Link>
+                    <Link className={classes.title} color="textSecondary" to={'/register'} >
+                        Dont have an account?
+                    </Link>
                 </form>
             </div>
         );
