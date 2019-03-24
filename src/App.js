@@ -5,7 +5,7 @@ import Login from './login';
 import Forgot from './forgot';
 import Dashboard from './dashboard';
 import Register from './register';
-import ResetSuccess from './resetSuccess';
+import ResetSuccess from './ResetSuccess';
 import Regsuccess from './regsuccess';
 import Profile from './profile';
 import Deals from './deals';
