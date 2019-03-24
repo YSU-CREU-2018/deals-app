@@ -5,7 +5,7 @@ import Login from './login';
 import Forgot from './forgot';
 import Dashboard from './dashboard';
 import Register from './register';
-import resetSuccess from './resetSuccess';
+import ResetSuccess from './resetSuccess';
 import Regsuccess from './regsuccess';
 import Profile from './profile';
 import Deals from './deals';
@@ -19,7 +19,7 @@ class App extends Component {
                 <Route path="/login" component={Login} />
                 <Route path="/forgot" component={Forgot} />
                 <Route path="/dashboard" component={Dashboard} />
-                <Route path="/resetSuccess" component={resetSuccess} />
+                <Route path="/resetSuccess" component={ResetSuccess} />
                 <Route path="/register" component={Register} />
                 <Route path="/regsuccess" component={Regsuccess} />
                 <Route path="/profile" component={Profile} />
@@ -31,7 +31,7 @@ class App extends Component {
             <div className="App">
             <Route path="/login" component={Login} />
             <Route path="/forgot" component={Forgot} />
-            <Route path="/resetSuccess" component={resetSuccess} />
+            <Route path="/resetSuccess" component={ResetSuccess} />
             <Route path="/register" component={Register} />
             <Route path="/regsuccess" component={Regsuccess} />
             </div>
