@@ -66,7 +66,7 @@ class Deals extends Component {
                     Here are some deals!
                 </Typography>
                 <Typography className={classes.dealtitle} variant="h5" component="h5">
-                    Please rate them by selecting a rate option.
+                    Please rate them on a scale of 1-5 : 1 being the worst, 5 being the best
                 </Typography>
                 <Grid container className={classes.root} spacing={16}>
                     {this.state.deals.map(deal =>
