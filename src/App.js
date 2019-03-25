@@ -16,6 +16,7 @@ class App extends Component {
         if(window.localStorage.getItem('email')){
             return (
                 <div className="App">
+                <Route path="/" component={Login} />
                 <Route path="/login" component={Login} />
                 <Route path="/forgot" component={Forgot} />
                 <Route path="/dashboard" component={Dashboard} />
