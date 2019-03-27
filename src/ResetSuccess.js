@@ -14,7 +14,7 @@ const styles = theme => ({
 class resetSuccess extends Component {
 
     onButtonClick = () => {
-        this.props.history.push("login")
+        this.props.history.push("/login")
     }
 
     render() {

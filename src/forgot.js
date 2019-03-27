@@ -74,7 +74,7 @@ class Forgot extends Component {
         }
         )
         .then((response) => {
-            this.props.history.push("resetSuccess")
+            this.props.history.push("/resetSuccess")
         })
         .catch(function (error) {
             console.log(error);

@@ -131,7 +131,7 @@ class Register extends Component {
         }
         )
         .then((response) => {
-            this.props.history.push("regsuccess")
+            this.props.history.push("/regsuccess")
         })
         .catch(function (error) {
             console.log(error);
