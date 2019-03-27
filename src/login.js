@@ -62,14 +62,14 @@ class Login extends Component {
     onButtonClick = () => {
         const env = runtimeEnv();
 
-        axios.post(env.REACT_APP_BACKEND_URL + '/login',{
+        axios.post(env.REACT_APP_BACKEND_URL + 'login',{
             email: this.state.email,
             password:this.state.password,
         }
         )
         .then((response) => {
             window.localStorage.setItem('email', this.state.email);
-            this.props.history.push("/dashboard/home")
+            this.props.history.push("dashboard/home")
         })
         .catch(function (error) {
             console.log(error);

@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-
+import runtimeEnv from '@mars/heroku-js-runtime-env';
 
 const styles = theme => ({
   register: {
@@ -119,7 +119,8 @@ class Register extends Component {
   };
 
     onButtonClick = () => {
-        axios.post('http://localhost:3000/register',{
+        const env = runtimeEnv();
+        axios.post(env.REACT_APP_BACKEND_URL + 'register',{
             'first-name': this.state.firstName,
             'last-name': this.state.lastName,
             birthday: this.state.birthday,
@@ -130,7 +131,7 @@ class Register extends Component {
         }
         )
         .then((response) => {
-            this.props.history.push("/regsuccess")
+            this.props.history.push("regsuccess")
         })
         .catch(function (error) {
             console.log(error);

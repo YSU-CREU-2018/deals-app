@@ -56,7 +56,7 @@ class Login extends Component {
     };
 
     onButtonClick = () => {
-        this.props.history.push("/login")
+        this.props.history.push("login")
     }
 
     render() {

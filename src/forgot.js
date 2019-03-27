@@ -68,13 +68,13 @@ class Forgot extends Component {
     onButtonClick = () => {
         const env = runtimeEnv();
 
-        axios.post(env.REACT_APP_BACKEND_URL + '/forgot',{
+        axios.post(env.REACT_APP_BACKEND_URL + 'forgot',{
             email: this.state.email,
             password:this.state.password,
         }
         )
         .then((response) => {
-            this.props.history.push("/resetSuccess")
+            this.props.history.push("resetSuccess")
         })
         .catch(function (error) {
             console.log(error);

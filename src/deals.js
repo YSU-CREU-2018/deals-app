@@ -47,7 +47,7 @@ class Deals extends Component {
     componentDidMount(){
         const env = runtimeEnv();
 
-        axios.get(env.REACT_APP_BACKEND_URL + '/deals/')
+        axios.get(env.REACT_APP_BACKEND_URL + 'deals/')
           .then((response) =>  {
             this.setState({deals: response.data})
           })

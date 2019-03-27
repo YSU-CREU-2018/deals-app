@@ -40,7 +40,7 @@ class Profile extends Component {
     componentDidMount(){
         const env = runtimeEnv();
 
-        axios.post( env.REACT_APP_BACKEND_URL +'/profile',{
+        axios.post( env.REACT_APP_BACKEND_URL +'profile',{
             email: window.localStorage.getItem('email'),
         }
         )

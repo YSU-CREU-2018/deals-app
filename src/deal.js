@@ -49,10 +49,10 @@ class Deal extends Component {
 
     handleChange = event => {
         const env = runtimeEnv();
-        
+
         this.setState({ rate: event.target.value },
             () => {
-                axios.post(env.REACT_APP_BACKEND_URL + '/deals/'+this.props.deal.uuid,{
+                axios.post(env.REACT_APP_BACKEND_URL + 'deals/'+this.props.deal.uuid,{
                     email: window.localStorage.getItem('email'),
                     deal: this.props.deal.uuid,
                     rating:this.state.rate,
