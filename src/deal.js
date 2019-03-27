@@ -14,6 +14,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
+import runtimeEnv from '@mars/heroku-js-runtime-env';
 
 const styles = theme => ({
     root:{
@@ -47,9 +48,11 @@ class Deal extends Component {
     };
 
     handleChange = event => {
+        const env = runtimeEnv();
+        
         this.setState({ rate: event.target.value },
             () => {
-                axios.post('http://localhost:3000/deals/'+this.props.deal.uuid,{
+                axios.post(env.REACT_APP_BACKEND_URL + '/deals/'+this.props.deal.uuid,{
                     email: window.localStorage.getItem('email'),
                     deal: this.props.deal.uuid,
                     rating:this.state.rate,

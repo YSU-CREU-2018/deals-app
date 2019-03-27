@@ -4,6 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import runtimeEnv from '@mars/heroku-js-runtime-env';
+
 
 const axios = require('axios');
 
@@ -36,7 +38,9 @@ class Profile extends Component {
     };
 
     componentDidMount(){
-        axios.post('http://localhost:3000/profile',{
+        const env = runtimeEnv();
+
+        axios.post( env.REACT_APP_BACKEND_URL +'/profile',{
             email: window.localStorage.getItem('email'),
         }
         )

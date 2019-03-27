@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import runtimeEnv from '@mars/heroku-js-runtime-env';
 
 
 const styles = theme => ({
@@ -65,7 +66,9 @@ class Forgot extends Component {
 
 
     onButtonClick = () => {
-        axios.post('http://localhost:3000/forgot',{
+        const env = runtimeEnv();
+
+        axios.post(env.REACT_APP_BACKEND_URL + '/forgot',{
             email: this.state.email,
             password:this.state.password,
         }

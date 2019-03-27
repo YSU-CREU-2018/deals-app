@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import runtimeEnv from '@mars/heroku-js-runtime-env';
 
 import Deal from './deal';
 
@@ -44,7 +45,9 @@ class Deals extends Component {
   };
 
     componentDidMount(){
-        axios.get('http://localhost:3000/deals/')
+        const env = runtimeEnv();
+
+        axios.get(env.REACT_APP_BACKEND_URL + '/deals/')
           .then((response) =>  {
             this.setState({deals: response.data})
           })
