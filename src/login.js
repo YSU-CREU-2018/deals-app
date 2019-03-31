@@ -73,6 +73,7 @@ class Login extends Component {
         })
         .catch(function (error) {
             console.log(error);
+            console.log(env.REACT_APP_BACKEND_URL)
         });
     }
 
