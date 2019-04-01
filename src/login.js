@@ -70,7 +70,7 @@ class Login extends Component {
         .then((response) => {
             window.localStorage.setItem('email', this.state.email);
             this.props.history.push("/dashboard/home")
-            window.reload();
+            window.refresh();
         })
         .catch(function (error) {
             console.log(error);
