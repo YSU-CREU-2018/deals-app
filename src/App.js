@@ -30,6 +30,7 @@ class App extends Component {
         }
         return (
             <div className="App">
+            <Route path="/" exact component={Login} />
             <Route path="/login" component={Login} />
             <Route path="/forgot" component={Forgot} />
             <Route path="/resetSuccess" component={ResetSuccess} />
