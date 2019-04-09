@@ -169,7 +169,7 @@ class Register extends Component {
                     />
                     <TextField
                         id="outlined-likes"
-                        helperText="Please enter some general interests, like 'techology' or 'fashion'"
+                        helperText="Please enter some general interests, like 'technology' or 'fashion'"
                         label="Likes"
                         className={classes.textField}
                         value={this.state.likes}
