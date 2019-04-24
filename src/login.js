@@ -23,7 +23,10 @@ const styles = theme => ({
   },
   heading:{
     textAlign: 'center',
-},
+  },
+  red:{
+      color: 'red',
+  },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
@@ -44,6 +47,7 @@ const styles = theme => ({
 
 class Login extends Component {
     state = {
+        err: false,
         email: '',
         password:'',
     };
@@ -72,9 +76,12 @@ class Login extends Component {
             this.props.history.push("/dashboard/home")
             window.location.reload();
         })
-        .catch(function (error) {
+        .catch((error) => {
             console.log(error);
             console.log(env.REACT_APP_BACKEND_URL)
+            this.setState({
+                err: true,
+            });
         });
     }
 
@@ -86,8 +93,9 @@ class Login extends Component {
                 <Typography variant="h3" className={classes.heading} gutterBottom>
                     Login
                 </Typography>
-
                 <form className={classes.container} noValidate autoComplete="off">
+                {this.state.err && <div className={classes.red}>Your password or email is incorrect.</div>}
+
                     <TextField
                         id="outlined-email"
                         label="Email"

@@ -22,7 +22,10 @@ const styles = theme => ({
   },
   heading:{
     textAlign: 'center',
-},
+  },
+  red:{
+      color: 'red',
+  },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
@@ -43,6 +46,7 @@ const styles = theme => ({
 
 class Forgot extends Component {
     state = {
+        err: false,
         email: '',
         password:'',
         repeatPassword:'',
@@ -76,7 +80,10 @@ class Forgot extends Component {
         .then((response) => {
             this.props.history.push("/resetSuccess")
         })
-        .catch(function (error) {
+        .catch((error) => {
+            this.setState({
+                err: true,
+            });
             console.log(error);
         });
     }
@@ -91,6 +98,7 @@ class Forgot extends Component {
                 </Typography>
 
                 <form className={classes.container} noValidate autoComplete="off">
+                {this.state.err && <div className={classes.red}>This email is not associated with an account.</div>}
                     <TextField
                         id="outlined-email"
                         label="Email"
