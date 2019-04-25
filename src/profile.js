@@ -66,9 +66,6 @@ class Profile extends Component {
                         Name: {this.state.profile['first-name']} {this.state.profile['last-name']}
                     </Typography>
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
-                        Birthday: {this.state.profile.birthday}
-                    </Typography>
-                    <Typography className={classes.title} color="textSecondary" gutterBottom>
                         Email: {this.state.profile.email}
                     </Typography>
                     <Typography className={classes.title} color="textSecondary" gutterBottom>

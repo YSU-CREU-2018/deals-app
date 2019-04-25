@@ -65,7 +65,6 @@ class Register extends Component {
     state = {
         firstName: '',
         lastName: '',
-        birthday: '',
         sex: '',
         email: '',
         password:'',
@@ -104,11 +103,6 @@ class Register extends Component {
             repeatPassword: event.target.value,
         });
     };
-    handleBirthday = birthday => event => {
-        this.setState({
-            birthday: event.target.value,
-        });
-    };
     handleSex = sex => event => {
         this.setState({
             sex : event.target.value,
@@ -123,7 +117,6 @@ class Register extends Component {
         axios.post(env.REACT_APP_BACKEND_URL + 'register',{
             'first-name': this.state.firstName,
             'last-name': this.state.lastName,
-            birthday: this.state.birthday,
             sex: this.state.sex,
             email: this.state.email,
             likes: this.state.likes,
@@ -177,21 +170,6 @@ class Register extends Component {
                         margin="normal"
                         variant="outlined"
                     />
-
-                    <TextField
-                        id="date"
-                        label="Birthday"
-                        type="date"
-                        defaultValue="2017-05-24"
-                        className={classes.textField}
-                        onChange={this.handleBirthday('birthday')}
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        variant="outlined"
-                        margin="normal"
-                    />
-
                     <TextField
                         id="outlined-select-sex"
                         select
